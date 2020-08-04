@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, SafeAreaView, View, StatusBar} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -37,6 +37,9 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
   },
+  ad:{
+    height: Platform.OS === 'android' ? 50 : 0
+  }
 });
 
 const Router = () => {
@@ -252,7 +255,7 @@ const Router = () => {
             }}
           />
         </Stack.Navigator>
-        <View style={{alignItems: 'center'}}>
+        <View style={styles.ad}>
           <AdMobBanner
             adSize="smartBannerPortrait"
             adUnitID="ca-app-pub-3940256099942544/6300978111"
@@ -266,3 +269,4 @@ const Router = () => {
 };
 
 export default Router;
+

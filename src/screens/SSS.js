@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Dimensions,
   ScrollView,
+  Platform,
 } from 'react-native';
 
 const windowWidth = Dimensions.get('window').width;
@@ -106,7 +107,7 @@ const styles = StyleSheet.create({
     width: windowWidth,
     height: windowHeight,
     backgroundColor: 'white',
-    marginTop: 50,
+    marginTop: Platform.OS === 'ios' ? 50 : 0,
   },
   box: {
     
