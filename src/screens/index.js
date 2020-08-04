@@ -14,3 +14,8 @@ export * from './TrafficScreenTwo';
 export * from './TrafficScreenThree';
 export * from './TrafficScreenFour';
 export * from './TrafficScreenFive';
+
+export * from './IlkYardim'
+export * from './Trafikvecevre'
+export * from './Motor'
+export * from './Trafikadabi'

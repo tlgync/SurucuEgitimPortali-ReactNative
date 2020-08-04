@@ -19,7 +19,7 @@ const SolveaQuestion = props => {
     <SafeAreaView style={styles.container}>
       <View style={styles.btnContainer}>
         <TouchableOpacity style={styles.btn} onPress={getTest}>
-          <Text style={styles.text}>2020 Sınavv</Text>
+          <Text style={styles.text}>2020 Sınav</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

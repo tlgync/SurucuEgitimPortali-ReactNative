@@ -23,6 +23,10 @@ import {
   TrafficScreenFive,
   TrafficScreenTwo,
   TrafficScreen,
+  IlkYardim,
+  Trafikvecevre,
+  Motor,
+  Trafikadabi
 } from './screens';
 
 const Tab = createBottomTabNavigator();
@@ -48,9 +52,9 @@ const Router = () => {
               iconName = focused
                 ? 'book-open-page-variant'
                 : 'book-open-page-variant';
-            } else if (route.name === 'SSS') {
+            } else if (route.name === 'S.S.S.') {
               iconName = focused ? 'head-question' : 'head-question-outline';
-            } else if (route.name === 'SubjectStudy') {
+            } else if (route.name === 'Konu Çalış') {
               iconName = focused ? 'book-account' : 'book-account-outline';
             } else if (route.name === 'Trafik İşaretleri') {
               iconName = focused ? 'traffic-cone' : 'traffic-cone';
@@ -67,8 +71,8 @@ const Router = () => {
           inactiveTintColor: 'gray',
         }}>
         <Tab.Screen name="Soru Çöz" component={SolveaQuestion} options={{}} />
-        <Tab.Screen name="SSS" component={SSS} />
-        <Tab.Screen name="SubjectStudy" component={SubjectStudy} />
+        <Tab.Screen name="S.S.S." component={SSS}  />
+        <Tab.Screen name="Konu Çalış" component={SubjectStudy} />
         <Tab.Screen name="Trafik İşaretleri" component={TrafficSigns} />
       </Tab.Navigator>
     );
@@ -98,7 +102,7 @@ const Router = () => {
             }}
           />
           <Stack.Screen
-            name="SettingsScreen"
+            name="SSS"
             component={SettingsScreen}
             options={{headerShown: false}}
           />
@@ -108,9 +112,69 @@ const Router = () => {
             options={{headerShown: false}}
           />
           <Stack.Screen
-            name="SubjectScreen"
-            component={SubjectScreen}
+            name="SubjectStudy"
+            component={SubjectStudy}
             options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="ilk yardım"
+            component={IlkYardim}
+            options={{
+              headerTintColor: 'tomato',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+              headerBackTitle: 'Geri',
+              headerBackTitleStyle: {
+                fontWeight: 'bold',
+              },
+              title: 'ilk yardım',
+            }}
+          />
+          <Stack.Screen
+            name="trafik ve çevre"
+            component={Trafikvecevre}
+            options={{
+              headerTintColor: 'tomato',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+              headerBackTitle: 'Geri',
+              headerBackTitleStyle: {
+                fontWeight: 'bold',
+              },
+              title: 'trafik ve çevre',
+            }}
+          />
+          <Stack.Screen
+            name="motor ve araç tekniği"
+            component={Motor}
+            options={{
+              headerTintColor: 'tomato',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+              headerBackTitle: 'Geri',
+              headerBackTitleStyle: {
+                fontWeight: 'bold',
+              },
+              title: 'motor ve araç tekniği',
+            }}
+          />
+          <Stack.Screen
+            name="trafik adabı"
+            component={Trafikadabi}
+            options={{
+              headerTintColor: 'tomato',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+              headerBackTitle: 'Geri',
+              headerBackTitleStyle: {
+                fontWeight: 'bold',
+              },
+              title: 'trafik adabı',
+            }}
           />
           <Stack.Screen
             name="Tehlike Uyari İşaretleri"
