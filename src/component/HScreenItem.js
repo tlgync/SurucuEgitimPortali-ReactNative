@@ -15,10 +15,11 @@ import Context from '../context/store';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const HScreenItem = props => {
+const HScreenItem = (props) => {
   const [ansIndex, setAnsIndex] = useState(0);
   const [dataLenght, setDataLenght] = useState([...props.itemData.item]);
   const [right, setRight] = useState(1);
+  const [click, setClick] = useState(1);
   const [randomNumbers, setRandomNumbers] = useState([]);
   const {state, dispatch} = useContext(Context);
 
@@ -62,12 +63,14 @@ const HScreenItem = props => {
     }
   };
 
-  const setIndex = correct => {
+  const setIndex = (correct) => {
+    setClick(0);
     if (ansIndex < dataLenght.length - 1) {
       if (state.right > 0) {
         dispatch({type: 'RİGHT_DOWN'});
         elseİf(correct);
         setTimeout(() => {
+          setClick(1);
           getRandom();
           setAnsIndex(ansIndex + 1);
           dispatch({type: 'RİGHT_PLUS'});
@@ -86,7 +89,7 @@ const HScreenItem = props => {
       }
     }
   };
-  const elseİf = correct => {
+  const elseİf = (correct) => {
     if (correct !== true) {
       dispatch({type: 'TOTAL_FALSES'});
     } else {
@@ -95,13 +98,13 @@ const HScreenItem = props => {
   };
 
   const backQuestion = () => {
-    if (ansIndex > 0) {
+    if (ansIndex > 0 && click > 0) {
       setAnsIndex(ansIndex - 1);
     }
   };
 
   const nextQuestion = () => {
-    if (ansIndex < dataLenght.length - 1) {
+    if (ansIndex < dataLenght.length - 1 && click > 0) {
       setAnsIndex(ansIndex + 1);
     }
   };
@@ -112,15 +115,16 @@ const HScreenItem = props => {
         {console.log(state)}
         <View
           style={{
-            
             textAlign: 'center',
             justifyContent: 'center',
             alignItems: 'center',
-            flex:0.5,
+            flex: 0.5,
             //sorubolumu
           }}>
           {props.itemData.item[ansIndex].question !== undefined ? (
-            <Text style={styles.soru}>{props.itemData.item[ansIndex].question}</Text>
+            <Text style={styles.soru}>
+              {props.itemData.item[ansIndex].question}
+            </Text>
           ) : (
             <View>
               {props.itemData.item[ansIndex].imgQuestionText !== undefined ? (
@@ -129,7 +133,9 @@ const HScreenItem = props => {
                     style={{width: 150, height: 150, alignItems: 'center'}}
                     source={{uri: props.itemData.item[ansIndex].imgQuestion}}
                   />
-                  <Text style={styles.soru}>{props.itemData.item[ansIndex].imgQuestionText}</Text>
+                  <Text style={styles.soru}>
+                    {props.itemData.item[ansIndex].imgQuestionText}
+                  </Text>
                 </View>
               ) : (
                 <Image
@@ -144,8 +150,7 @@ const HScreenItem = props => {
           {randomNumbers.length > 0
             ? randomNumbers.map((e, index) => {
                 return (
-                  <View
-                    key={index}>
+                  <View key={index}>
                     <QuestionButton
                       setInd={setIndex}
                       buttonData={
@@ -163,9 +168,8 @@ const HScreenItem = props => {
           style={{
             flexDirection: 'row',
             alignSelf: 'center',
-            marginTop:40,
-            marginBottom: 150, 
-            
+            marginTop: 40,
+            marginBottom: 150,
           }}>
           <View style={{marginHorizontal: 10}}>
             <TouchableOpacity onPress={backQuestion}>
@@ -173,7 +177,7 @@ const HScreenItem = props => {
             </TouchableOpacity>
           </View>
 
-          <View style={{marginHorizontal: 10,}}>
+          <View style={{marginHorizontal: 10}}>
             <Text style={styles.pageNumber}>
               {ansIndex + 1}/{dataLenght.length}
             </Text>
@@ -196,38 +200,33 @@ const styles = StyleSheet.create({
     backgroundColor: '#f9f9f9',
     width: windowWidth,
     height: windowHeight,
-    
   },
-  beforeAfter:{
+  beforeAfter: {
     fontFamily: 'Roboto-Black',
     fontSize: 17,
     color: 'tomato',
-    letterSpacing: 0.7
+    letterSpacing: 0.7,
   },
   pageNumber: {
-    
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
     fontFamily: 'Roboto-Black',
     fontSize: 17,
     color: 'tomato',
-    letterSpacing: 0.7
+    letterSpacing: 0.7,
   },
-  soru:{
+  soru: {
     fontFamily: 'Roboto-Black',
     fontSize: 17,
-    marginHorizontal: 5
+    marginHorizontal: 5,
   },
   questionButton: {
-    flex:1,
+    flex: 1,
     width: windowWidth,
     alignItems: 'center',
     justifyContent: 'center',
     textAlign: 'center',
     flexWrap: 'wrap',
-    
-    
-    
   },
 });

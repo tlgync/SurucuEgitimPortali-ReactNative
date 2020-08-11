@@ -86,7 +86,7 @@ const SSS = (props) => {
           <Text style={styles.H1}>
             Ehliyetimi kaybettim kayıp ehliyet yeniden nasıl çıkarılır?
           </Text>
-          <Text style={styles.p}>
+          <Text style={styles.p1}>
             Öncelikle gazeteye kayıp ilanı vermeniz tavsiye olunur karakol
             tutanağı da olabilir. Daha sonra ehliyeti aldığınız Trafik Tescil
             Büro Amirliğine 2 fotoğraf Nüfus cüzdanı aslı, şoförler cemiyetinden
@@ -129,6 +129,14 @@ const styles = StyleSheet.create({
     letterSpacing: 0.4,
     textAlign: 'center',
     lineHeight: 23,
+  },
+  p1: {
+    fontFamily: 'Roboto-Medium',
+    fontSize: 15,
+    letterSpacing: 0.4,
+    textAlign: 'center',
+    lineHeight: 23,
+    marginBottom: 200
   },
   scroll: {
     

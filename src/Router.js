@@ -255,14 +255,6 @@ const Router = () => {
             }}
           />
         </Stack.Navigator>
-        <View style={styles.ad}>
-          <AdMobBanner
-            adSize="smartBannerPortrait"
-            adUnitID="ca-app-pub-3940256099942544/6300978111"
-            testDevices={[AdMobBanner.simulatorId]}
-            onAdFailedToLoad={(error) => console.error(error)}
-          />
-        </View>
       </NavigationContainer>
     </Provider>
   );
